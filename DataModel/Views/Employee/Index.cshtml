@@ -10,42 +10,61 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+        p{
+            text-align: center;
+        }
+        th{
+            background-color:chartreuse;
+        }
+        tr{
+            background-color:azure;
+        }
+        body{
+            background-color: aliceblue;
+        }
+    </style>
 </head>
 <body>
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
+    <table class="table" style="border-collapse:collapse;" border="1" width="40%" align="center">
         <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JoiningDate)
+                @Html.ActionLink("JoiningDate", "Index", new { sortOrder = ViewBag.JoiningDateSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Age)
+                @Html.ActionLink("Age", "Index" , new { sortOrdeer = ViewBag.Age})
             </th>
-            <th></th>
         </tr>
     
     @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JoiningDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JoiningDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
     }
     
     </table>
